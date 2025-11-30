@@ -8,17 +8,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Deploy to Fathur's Debian laptop
-  deploy-fathur:
-    name: Deploy to Fathur (Debian)
-    runs-on: [self-hosted, laptop-fathur]
+  # Deploy to Boaz's Ubuntu laptop
+  deploy-boaz:
+    name: Deploy to Boaz (Ubuntu)
+    runs-on: [self-hosted, laptop-boaz]
     
     steps:
     - name: Set project path
       run: |
-        PROJECT_PATH=$(find /home -name 'ogani_website' -type d 2>/dev/null | head -1)
+        PROJECT_PATH=$(find /home -name 'electro-master' -type d 2>/dev/null | head -1)
         if [ -z "$PROJECT_PATH" ]; then
-          echo "❌ Error: Folder ogani_website tidak ditemukan"
+          echo "❌ Error: Folder electro-master tidak ditemukan"
           exit 1
         fi
         echo "PROJECT_PATH=$PROJECT_PATH" >> $GITHUB_ENV
@@ -117,11 +117,11 @@ jobs:
       if: always()
       run: |
         if [ ${{ job.status }} == 'success' ]; then
-          echo "✅ Deployment SUCCESS on laptop-fathur (Debian)"
+          echo "✅ Deployment SUCCESS on laptop-Boaz (Debian)"
           echo "🌐 Application: http://localhost:8080"
           echo "🗄️  phpMyAdmin: http://localhost:8081"
         else
-          echo "❌ Deployment FAILED on laptop-fathur (Debian)"
+          echo "❌ Deployment FAILED on laptop-boaz (Debian)"
         fi
 
   # Deploy to Vermicide's Ubuntu laptop
@@ -132,9 +132,9 @@ jobs:
     steps:
     - name: Set project path
       run: |
-        PROJECT_PATH=$(find /home -name 'ogani_website' -type d 2>/dev/null | head -1)
+        PROJECT_PATH=$(find /home -name 'electro-master' -type d 2>/dev/null | head -1)
         if [ -z "$PROJECT_PATH" ]; then
-          echo "❌ Error: Folder ogani_website tidak ditemukan"
+          echo "❌ Error: Folder electro-master tidak ditemukan"
           exit 1
         fi
         echo "PROJECT_PATH=$PROJECT_PATH" >> $GITHUB_ENV
