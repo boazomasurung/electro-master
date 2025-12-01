@@ -125,9 +125,9 @@ jobs:
         fi
 
   # Deploy to Vermicide's Ubuntu laptop
-  deploy-vermicide:
-    name: Deploy to Vermicide (Ubuntu)
-    runs-on: [self-hosted, my-laptop]
+  deploy-adib:
+    name: Deploy to adib (Ubuntu)
+    runs-on: [self-hosted, my-laptop, laptop-adib]
     
     steps:
     - name: Set project path
